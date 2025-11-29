@@ -49,6 +49,7 @@ echo "🐳 [Builder] 启动 Node.js 容器进行构建..."
 echo "   - 任务: Git Clone -> PNPM Install -> PNPM Build"
 
 docker run --rm \
+    -e ASTRO_TELEMETRY_DISABLED=1 \
     -v "$WORKSPACE_DIR:/app" \
     -w /app \
     swr.cn-north-4.myhuaweicloud.com/ddn-k8s/docker.io/library/node:20-alpine \
@@ -84,6 +85,28 @@ docker run --rm \
 
     echo '📦 [Container] 安装依赖 (pnpm install)...'
     pnpm install --frozen-lockfile || pnpm install
+
+    # --- 临时修复 Tailwind CSS 报错 (Rei 的魔法补丁 🩹) ---
+    # 报错原因: markdown.css 引用了不存在的 @apply link; 类
+    # 解决方案: 如果发现 markdown.css 中有 @apply ... link，则将其删除或注释
+    if [ -f \"src/styles/markdown.css\" ]; then
+        echo '🩹 [Container] 检测到 markdown.css，正在应用 Tailwind 修复补丁...'
+        # 使用 sed 删除包含 '@apply' 和 'link' 的行 (简单粗暴但有效)
+        # 或者更安全地：只把 @apply 这一行里的 link 删掉
+        # 这里我们尝试直接把引发报错的 link 类定义替换掉或者修正
+        # 错误信息是: The \`link\` class does not exist.
+        
+        # 尝试 1: 创建一个空的 link 类 (如果它应该是自定义的)
+        # echo '.link {}' >> src/styles/global.css 
+        
+        # 尝试 2 (推荐): 既然报错说 link 不存在，那我们就把 markdown.css 里的 @apply ... link ... 中的 link 删掉
+        # 假设出错行长这样: @apply link text-blue-600 ...;
+        sed -i 's/link //g' src/styles/markdown.css
+        sed -i 's/ @apply link/ @apply/g' src/styles/markdown.css
+        
+        echo '✅ [Container] 补丁已应用！'
+    fi
+    # ----------------------------------------------------
 
     echo '🏗️ [Container] 打包构建 (pnpm run build)...'
     pnpm run build
