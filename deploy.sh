@@ -3,12 +3,13 @@
 # ==========================================
 # Astro Blog 纯容器化部署脚本 (Rei Edition ✨)
 # ==========================================
-# 用法: curl -sSL ... | bash -s -- [username] [repo]
+# 用法: curl -sSL ... | bash -s -- [username] [repo] [port]
 
 # --- 动态参数解析 ---
 # 默认值
-GITHUB_USER=${1:-"Charca"}      # 第一个参数: GitHub 用户名 (默认 Charca)
-GITHUB_REPO=${2:-"astro-blog-template"} # 第二个参数: 仓库名 (默认 astro-blog-template)
+GITHUB_USER=${1:-"Charca"}      # 第1个参数: GitHub 用户名
+GITHUB_REPO=${2:-"astro-blog-template"} # 第2个参数: 仓库名
+PORT=${3:-4000}                 # 第3个参数: 端口号 (默认 4000)
 
 # 拼接仓库地址
 REPO_URL="https://github.com/${GITHUB_USER}/${GITHUB_REPO}.git"
@@ -16,13 +17,13 @@ REPO_URL="https://github.com/${GITHUB_USER}/${GITHUB_REPO}.git"
 # 根据仓库名生成本地应用名和容器名
 APP_NAME="${GITHUB_REPO}"
 CONTAINER_NAME="${GITHUB_REPO}-container"
-PORT=4000
 
 # --- 脚本开始 ---
 echo "=========================================="
 echo "🚀 (Rei) 部署脚本启动！"
 echo "👤 用户: $GITHUB_USER"
 echo "📦 仓库: $GITHUB_REPO"
+echo "🔌 端口: $PORT"
 echo "🔗 地址: $REPO_URL"
 echo "=========================================="
 
