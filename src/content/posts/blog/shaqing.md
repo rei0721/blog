@@ -1,10 +1,10 @@
 ---
-title: 什么是杀青梗？
+title: 什么是杀青？
 published: 2025-09-07
-description: '随便记录一下'
+description: '标记一下“杀青”这个梗的由来。'
 image: ''
-tags: [杀青,杀青梗]
-category: 'my'
+tags: [杀青, 杀青梗]
+category: 'blog'
 draft: false 
 lang: ''
 ---

@@ -1,12 +1,12 @@
 ---
 title: vue指令安装时参数带-d与不带-d
 published: 2025-09-12
-description: 'vue指令安装时参数带-d与不带-d'
+description: vue指令安装时参数带-d与不带-d
 image: ''
 tags: [vue,vue-cli,vue-cli-args]
-category: 'vue'
+category: vue
 draft: false 
-lang: 'zh-CN'
+lang: zh-CN
 ---
 
 

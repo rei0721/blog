@@ -1,10 +1,10 @@
 ---
-title: 常用Git用法
+title: Git常用指令
 published: 2025-08-09
-description: '常用Git用法'
+description: 'Git常用指令'
 image: ''
 tags: [git,github]
-category: 'other'
+category: 'git'
 draft: false 
 lang: ''
 ---

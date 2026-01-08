@@ -8,8 +8,8 @@ import type {
 import { LinkPreset } from "./types/config";
 
 export const siteConfig: SiteConfig = {
-	title: "Rei",
-	subtitle: "???", // A short description or tagline for your blog
+	title: "Rei's Blog",
+	subtitle: "一个fvv，", // A short description or tagline for your blog
 	lang: "zh_CN", // Language code, e.g. 'en', 'zh-CN', 'ja', etc.
 	
 	themeColor: {
@@ -53,7 +53,7 @@ export const navBarConfig: NavBarConfig = {
 		},
 		{
 			name: "GitHub",
-			url: "https://github.com/kobayashirei", // Internal links should not include the base path, as it is automatically added
+			url: "https://github.com/rei0721", // Internal links should not include the base path, as it is automatically added
 			external: true, // Show an external link icon and will open in a new tab
 		},
 		
@@ -62,8 +62,8 @@ export const navBarConfig: NavBarConfig = {
 
 export const profileConfig: ProfileConfig = {
 	avatar: "assets/images/xiaolin-avatar.jpg", // Relative to the /src directory. Relative to the /public directory if it starts with '/'
-	name: "Rei",
-	bio: "???", // A short bio or description
+	name: "Rei's Blog",
+	bio: "一个fvv，", // A short bio or description
 	links: [
 		// {
 		// 	name: "Twitter",
@@ -80,7 +80,7 @@ export const profileConfig: ProfileConfig = {
 		{
 			name: "GitHub",
 			icon: "fa6-brands:github",
-			url: "https://github.com/kobayashirei",
+			url: "https://github.com/rei0721",
 		},
 	],
 };
